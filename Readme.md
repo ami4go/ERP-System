@@ -1,15 +1,6 @@
-Here is a professional, enhanced, and detailed `README.md` file. You can copy and paste this directly into your GitHub repository.
-
-It covers the complete architecture, features, prerequisites, and a foolproof setup guide.
-
------
-
-````markdown
-# 🎓 University ERP System
+<h1 align="center">🎓 University ERP System</h1>
 
 A comprehensive, desktop-based Enterprise Resource Planning (ERP) system designed for university management. Built using **Java Swing** and **MySQL**, this application streamlines the academic lifecycle—from user administration and course creation to student registration and complex grade calculations.
-
----
 
 ## 🌟 Key Features
 
