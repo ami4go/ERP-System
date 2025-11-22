@@ -1,17 +1,3 @@
-Got it bro ✅ — **ONE SINGLE README.md**, complete, clean, GitHub-ready, with:
-
-✅ Full Project Documentation
-✅ Full SQL Script included inside the README
-✅ SQL clearly highlighted in its own code block
-✅ Test accounts updated to **India@123**
-✅ Nothing missing, nothing external
-
-Just **copy–paste** into `README.md` and you're done ✅
-
----
-
-# ✅ FINAL `README.md`
-
 ```markdown
 # University ERP System (Java + Swing)
 
