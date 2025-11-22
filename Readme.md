@@ -14,9 +14,9 @@ The **University ERP System** is a comprehensive desktop application that manage
 
 Built using:
 
-- **Java (Swing)** for UI
-- **MySQL** for persistent storage
-- **BCrypt** for secure authentication
+- **Java (Swing)** for UI  
+- **MySQL** for persistent storage  
+- **BCrypt** for secure authentication  
 - **Dual-Database Architecture**
 
 ### 🧠 Key Architectural Features
@@ -85,29 +85,93 @@ Stores academic data and transactions.
 ```
 
 src/
-├─ edu.univ.erp.ui/        → User Interface (Swing)
-├─ edu.univ.erp.service/   → Business Logic
-├─ edu.univ.erp.data/      → Database Access (DAO)
-├─ edu.univ.erp.domain/    → Models / POJOs
-└─ edu.univ.erp.util/      → Utilities & Auth Helpers
+├─ edu.univ.erp.ui/
+├─ edu.univ.erp.service/
+├─ edu.univ.erp.data/
+├─ edu.univ.erp.domain/
+├─ edu.univ.erp.auth/
+├─ edu.univ.erp.util/
+└─ edu.univ.erp.access/
 
 ```
 
-### 🔍 Highlights
+---
 
-- `LoginWindow.java` → Entry point
-- `AdminDashboard.java` → Admin Control Center
-- `StudentDashboard.java` → Student Portal
-- `InstructorDashboard.java` → Faculty Portal
-- `GradebookWindow.java` → Marks Entry Panel
-- `PasswordUtil.java` → BCrypt Wrapper
-- `DBConnection.java` → MySQL Credentials
+## 📦 4. Package Details
+
+### ✅ `edu.univ.erp.ui` (User Interface)
+
+- **LoginWindow.java** – Entry point and login handler
+- **AdminDashboard.java** – Admin control center
+- **StudentDashboard.java** – Student portal
+- **InstructorDashboard.java** – Instructor portal
+- **UserManagementPanel.java** – CRUD for users
+- **SectionManagementPanel.java** – Create/Schedule sections
+- **CourseCatalogPanel.java** – Student course browsing & registration
+- **GradebookWindow.java** – Enter & compute grades
+- **MaintenanceBanner.java** – Shows warning during Maintenance Mode
 
 ---
 
-## 🚀 4. How to Run the Application
+### ✅ `edu.univ.erp.service` (Business Logic)
 
-### ✅ Prerequisites
+- **AuthService.java** – Login + password verification
+- **AdminService.java** – Session reset, semester promotion, archival
+- **StudentService.java** – Registration rules, SGPA, CGPA
+- **InstructorService.java** – Gradebook & class statistics
+
+---
+
+### ✅ `edu.univ.erp.data` (Data Access / DAO)
+
+- **DatabaseManager.java** – HikariCP pooling
+- **AdminRepository.java** – User & course SQL operations
+- **SectionRepository.java** – Section & timetable joins
+- **GradeRepository.java** – Grade storage & retrieval
+
+---
+
+### ✅ `edu.univ.erp.domain` (Models)
+
+- **AdminUser.java**
+- **Student.java**
+- **Course.java**
+- **Section.java**
+
+Plain POJOs that map directly to database tables.
+
+---
+
+### ✅ `edu.univ.erp.auth` & `edu.univ.erp.util` (Utilities)
+
+- **CurrentUserSession.java** – Stores logged-in user
+- **PasswordUtil.java** – BCrypt hashing
+- **DBConnection.java** – DB URL & credentials
+- **DbBackupService.java** – mysqldump backups
+
+---
+
+### ✅ ✅ `edu.univ.erp.access` (Security & Permissions) ✅ ✅
+
+**This package enforces system-wide access rules and Maintenance Mode.**
+
+#### **AccessControl.java**
+
+- ✅ **Security Gatekeeper:** Central permission validator
+- ✅ **Role Checks:** Blocks unauthorized actions (e.g., Students can't edit grades)
+- ✅ **Maintenance Enforcement:**
+  - When **Maintenance Mode = ON**
+  - All **INSERT / UPDATE / DELETE** actions are blocked
+  - Only **Admins** retain write access
+  - System becomes **Read-Only** for Students & Instructors
+
+This ensures **data integrity** during system maintenance or upgrades.
+
+---
+
+## 🚀 5. How to Run the Application
+
+### ✅ Requirements
 
 - **Java JDK 17+**
 - **MySQL 8+**
@@ -147,7 +211,7 @@ src/edu/univ/erp/Main.java
 
 ---
 
-## 🔑 5. Test Accounts
+## 🔑 6. Test Accounts
 
 | Role       | Username        | Password      |
 | ---------- | --------------- | ------------- |
@@ -160,7 +224,7 @@ src/edu/univ/erp/Main.java
 
 ---
 
-## 🧩 6. FULL DEPLOYMENT SQL SCRIPT (`university_setup.sql`)
+## 🧩 7. FULL DEPLOYMENT SQL SCRIPT (`university_setup.sql`)
 
 > 📌 **Copy-Paste & Run Entire Script in MySQL Workbench**
 
