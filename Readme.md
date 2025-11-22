@@ -754,6 +754,3 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ---
 
 <div align="center">
-
-</div>
-```
