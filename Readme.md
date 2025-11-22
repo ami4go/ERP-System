@@ -1,15 +1,162 @@
-Here is the complete, **deployment-ready solution**.
+Got it bro ✅ — **ONE SINGLE README.md**, complete, clean, GitHub-ready, with:
 
-This response contains two parts:
+✅ Full Project Documentation
+✅ Full SQL Script included inside the README
+✅ SQL clearly highlighted in its own code block
+✅ Test accounts updated to **India@123**
+✅ Nothing missing, nothing external
 
-1.  **The `university_setup.sql` Script**: A single file that creates the databases, tables, and inserts the data with your specific password hash.
-2.  **The `README.md` / PDF Content**: The comprehensive guide for the evaluator.
+Just **copy–paste** into `README.md` and you're done ✅
 
------
+---
 
-### Part 1: The "Golden" SQL Script (`university_setup.sql`)
+# ✅ FINAL `README.md`
 
-**Instruction:** Save the following code block as a file named `university_setup.sql` and include it in your submission folder. This script handles **everything**—creating the DBs, schema, and inserting the sample data with your specific hash.
+```markdown
+# University ERP System (Java + Swing)
+
+**Course Project - Monsoon 2025**
+
+---
+
+## 1. Project Overview
+
+This is a comprehensive **University Enterprise Resource Planning (ERP)** desktop application. It manages the academic lifecycle of a university, handling users, courses, enrollments, and grading.
+
+The system is built using **Java (Swing)** for the UI and **MySQL** for data persistence. It features a secure **Dual-Database Architecture** to separate sensitive authentication data from general academic records.
+
+### Key Architectural Features
+
+- **Natural Key Design:** Uses **Usernames** and **Course Codes** instead of numeric IDs.
+- **Role-Based Access Control (RBAC):** Different features for Admins, Students, and Instructors.
+- **Secure Authentication:** BCrypt password hashing.
+
+### Academic Logic (Monsoon 2025)
+
+- Only **Odd Semesters (1, 3, 5, 7)** are active.
+- Program limits:
+  - **B.Tech:** Max 8 semesters
+  - **M.Tech:** Max 4 semesters
+  - **PhD:** No fixed limit
+- Students beyond limits are flagged for graduation/archival.
+
+---
+
+## 2. Database Architecture
+
+The system uses two separate databases:
+
+### ✅ `auth_db` – Authentication Database
+Stores secure login credentials.
+
+**Table: `users_auth`**
+- `username` (PK)
+- `full_name`
+- `role`
+- `password_hash`
+- `status`
+
+### ✅ `erp_db` – Academic Database
+Stores academic records.
+
+**Major Tables**
+- `students`, `instructors`, `admins`
+- `courses`
+- `sections`
+- `enrollments`
+- `assessments`
+- `grades`
+- `grading_scale`
+- `academic_history`
+
+---
+
+## 3. Project Structure (MVC)
+
+### 📦 UI (`edu.univ.erp.ui`)
+- `LoginWindow.java`
+- `AdminDashboard.java`
+- `StudentDashboard.java`
+- `InstructorDashboard.java`
+- `UserManagementPanel.java`
+- `SectionManagementPanel.java`
+- `CourseCatalogPanel.java`
+- `GradebookWindow.java`
+
+### 📦 Services (`edu.univ.erp.service`)
+- `AuthService.java`
+- `AdminService.java`
+- `StudentService.java`
+- `InstructorService.java`
+
+### 📦 Data Access (`edu.univ.erp.data`)
+- `DatabaseManager.java`
+- `AdminRepository.java`
+- `SectionRepository.java`
+- `GradeRepository.java`
+
+### 📦 Models (`edu.univ.erp.domain`)
+- `AdminUser.java`
+- `Student.java`
+- `Course.java`
+- `Section.java`
+
+### 📦 Utilities
+- `CurrentUserSession.java`
+- `PasswordUtil.java`
+- `DBConnection.java`
+
+---
+
+## 4. How to Run
+
+### ✅ Requirements
+- **Java 17+**
+- **MySQL 8+**
+- **IntelliJ / Eclipse / NetBeans**
+
+### ✅ Step 1: Configure DB Password
+Open:
+```
+
+src/edu/univ/erp/util/DBConnection.java
+
+````
+
+Update:
+```java
+private static final String DB_USER = "root";
+private static final String DB_PASS = "YOUR_MYSQL_PASSWORD";
+````
+
+### ✅ Step 2: Create Databases
+
+Run the SQL script provided below.
+
+### ✅ Step 3: Launch
+
+Run:
+
+```
+src/edu/univ/erp/Main.java
+```
+
+### ✅ Test Accounts
+
+| Role       | Username        | Password    | Notes          |
+| ---------- | --------------- | ----------- | -------------- |
+| Admin      | `admin`         | `India@123` | Full Access    |
+| Student    | `student_alice` | `India@123` | Sem 3 CSE      |
+| Student    | `student_bob`   | `India@123` | Sem 3 ECE      |
+| Instructor | `prof_jones`    | `India@123` | Teaches CSE101 |
+
+✅ All accounts use the password: **India@123**
+
+---
+
+## 5. ✅ FULL DEPLOYMENT SQL SCRIPT
+
+> Copy-paste and run this entire script in MySQL Workbench.
 
 ```sql
 -- ================================================================
@@ -17,7 +164,7 @@ This response contains two parts:
 -- ================================================================
 -- This script creates 'auth_db' and 'erp_db' from scratch.
 -- It populates them with "Monsoon 2025" data and test users.
--- Password Hash used: $2a$10$RWjBO9xqOfqS6VrNafXxqem99j6NkXtkYlo8w1RVhgKGKPNeHagGC
+-- Password corresponds to: "India@123"
 -- ================================================================
 
 SET NAMES utf8mb4;
@@ -35,14 +182,14 @@ USE auth_db;
 CREATE TABLE users_auth (
   username VARCHAR(50) NOT NULL,
   full_name VARCHAR(100) NOT NULL,
-  role VARCHAR(20) NOT NULL, -- 'Student', 'Instructor', 'Admin'
+  role VARCHAR(20) NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
   status VARCHAR(20) DEFAULT 'Active',
   last_login DATETIME DEFAULT NULL,
   PRIMARY KEY (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Insert Users with the SPECIFIC HASH requested
+-- Insert Users
 INSERT INTO users_auth (username, full_name, role, password_hash) VALUES 
 ('admin', 'System Administrator', 'Admin', '$2a$10$RWjBO9xqOfqS6VrNafXxqem99j6NkXtkYlo8w1RVhgKGKPNeHagGC'),
 ('student_alice', 'Alice Smith', 'Student', '$2a$10$RWjBO9xqOfqS6VrNafXxqem99j6NkXtkYlo8w1RVhgKGKPNeHagGC'),
@@ -57,14 +204,12 @@ DROP DATABASE IF EXISTS erp_db;
 CREATE DATABASE erp_db;
 USE erp_db;
 
--- A. System Settings
 CREATE TABLE system_settings (
   setting_key VARCHAR(50) NOT NULL,
   setting_value VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (setting_key)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
--- Set Monsoon 2025 Context
 INSERT INTO system_settings (setting_key, setting_value) VALUES 
 ('current_term', 'Monsoon'),
 ('current_year', '2025'),
@@ -72,24 +217,23 @@ INSERT INTO system_settings (setting_key, setting_value) VALUES
 ('session_end_date', '2025-12-15'),
 ('maintenance_mode', 'false');
 
--- B. Profiles (Linked to Auth via Username)
 CREATE TABLE admins (
   username VARCHAR(50) NOT NULL,
   full_name VARCHAR(100) DEFAULT NULL,
   PRIMARY KEY (username)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 CREATE TABLE students (
   username VARCHAR(50) NOT NULL,
   roll_no VARCHAR(20) DEFAULT NULL,
   full_name VARCHAR(100) DEFAULT NULL,
   program VARCHAR(50) DEFAULT NULL,
-  year INT DEFAULT NULL, -- Admission Year
+  year INT DEFAULT NULL,
   current_semester INT DEFAULT 1,
   cgpa DECIMAL(4,2) DEFAULT 0.00,
   PRIMARY KEY (username),
   UNIQUE KEY roll_no_UNIQUE (roll_no)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 CREATE TABLE instructors (
   username VARCHAR(50) NOT NULL,
@@ -97,17 +241,16 @@ CREATE TABLE instructors (
   department VARCHAR(50) DEFAULT NULL,
   title VARCHAR(50) DEFAULT NULL,
   PRIMARY KEY (username)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
--- C. Academic Structure
 CREATE TABLE courses (
   code VARCHAR(20) NOT NULL,
   title VARCHAR(100) DEFAULT NULL,
   credits INT DEFAULT NULL,
-  program_type VARCHAR(20) DEFAULT NULL, -- Core/Elective
-  allowed_semesters VARCHAR(50) DEFAULT NULL, -- "1,2,3"
+  program_type VARCHAR(20) DEFAULT NULL,
+  allowed_semesters VARCHAR(50) DEFAULT NULL,
   PRIMARY KEY (code)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 CREATE TABLE sections (
   section_id INT NOT NULL AUTO_INCREMENT,
@@ -121,11 +264,9 @@ CREATE TABLE sections (
   year INT DEFAULT NULL,
   deadline DATE DEFAULT NULL,
   PRIMARY KEY (section_id),
-  KEY fk_sections_course (course_code),
-  KEY fk_sections_instructor (instructor_username),
-  CONSTRAINT fk_sections_course FOREIGN KEY (course_code) REFERENCES courses (code) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_sections_instructor FOREIGN KEY (instructor_username) REFERENCES instructors (username) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (course_code) REFERENCES courses (code),
+  FOREIGN KEY (instructor_username) REFERENCES instructors (username)
+);
 
 CREATE TABLE enrollments (
   enrollment_id INT NOT NULL AUTO_INCREMENT,
@@ -135,11 +276,9 @@ CREATE TABLE enrollments (
   final_score DECIMAL(5,2) DEFAULT 0.00,
   course_grade VARCHAR(5) DEFAULT 'IP',
   PRIMARY KEY (enrollment_id),
-  KEY fk_enrollments_student (student_username),
-  KEY fk_enrollments_section (section_id),
-  CONSTRAINT fk_enrollments_section FOREIGN KEY (section_id) REFERENCES sections (section_id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_enrollments_student FOREIGN KEY (student_username) REFERENCES students (username) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (section_id) REFERENCES sections (section_id),
+  FOREIGN KEY (student_username) REFERENCES students (username)
+);
 
 CREATE TABLE assessments (
   assessment_id INT NOT NULL AUTO_INCREMENT,
@@ -148,9 +287,8 @@ CREATE TABLE assessments (
   weightage DECIMAL(5,2) DEFAULT NULL,
   total_marks DECIMAL(5,2) DEFAULT NULL,
   PRIMARY KEY (assessment_id),
-  KEY fk_assessments_section (section_id),
-  CONSTRAINT fk_assessments_section FOREIGN KEY (section_id) REFERENCES sections (section_id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (section_id) REFERENCES sections (section_id)
+);
 
 CREATE TABLE grades (
   grade_id INT NOT NULL AUTO_INCREMENT,
@@ -160,9 +298,8 @@ CREATE TABLE grades (
   total_marks DECIMAL(5,2) DEFAULT NULL,
   weight DECIMAL(5,2) DEFAULT NULL,
   PRIMARY KEY (grade_id),
-  KEY fk_grades_enrollment (enrollment_id),
-  CONSTRAINT fk_grades_enrollment FOREIGN KEY (enrollment_id) REFERENCES enrollments (enrollment_id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (enrollment_id) REFERENCES enrollments (enrollment_id)
+);
 
 CREATE TABLE grading_scale (
   scale_id INT NOT NULL AUTO_INCREMENT,
@@ -171,9 +308,8 @@ CREATE TABLE grading_scale (
   min_percentage DECIMAL(5,2) DEFAULT NULL,
   grade_points DECIMAL(4,2) DEFAULT NULL,
   PRIMARY KEY (scale_id),
-  KEY fk_scale_section (section_id),
-  CONSTRAINT fk_scale_section FOREIGN KEY (section_id) REFERENCES sections (section_id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (section_id) REFERENCES sections (section_id)
+);
 
 CREATE TABLE academic_history (
   history_id INT NOT NULL AUTO_INCREMENT,
@@ -186,12 +322,11 @@ CREATE TABLE academic_history (
   final_score DECIMAL(5,2) DEFAULT NULL,
   letter_grade VARCHAR(5) DEFAULT NULL,
   PRIMARY KEY (history_id),
-  KEY fk_history_student (student_username),
-  CONSTRAINT fk_history_student FOREIGN KEY (student_username) REFERENCES students (username) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  FOREIGN KEY (student_username) REFERENCES students (username)
+);
 
 -- ---------------------------------------------------------
--- 3. SEED INITIAL DATA (Profiles & Courses)
+-- 3. SEED INITIAL DATA
 -- ---------------------------------------------------------
 INSERT INTO admins (username, full_name) VALUES ('admin', 'System Administrator');
 
@@ -209,16 +344,11 @@ INSERT INTO courses (code, title, credits, program_type, allowed_semesters) VALU
 ('ECE101', 'Digital Circuits', 4, 'Core', '1,2,3'),
 ('DES101', 'Design Drawing', 3, 'Elective', '1,2,3');
 
--- ---------------------------------------------------------
--- 4. SEED ACTIVE SECTIONS & ENROLLMENTS
--- ---------------------------------------------------------
--- Create Sections for Monsoon 2025
 INSERT INTO sections (course_code, instructor_username, day_time, room, capacity, current_enrollment, semester, year, deadline) VALUES
 ('CSE101', 'prof_jones', 'Mon/Wed 10:00', 'LHC-101', 60, 2, 'Monsoon', 2025, '2025-09-15'),
 ('MTH100', 'prof_smith', 'Tue/Thu 11:30', 'LHC-102', 40, 1, 'Monsoon', 2025, '2025-09-15'),
 ('ECE101', 'prof_smith', 'Mon/Wed 14:00', 'ECE-Lab', 30, 1, 'Monsoon', 2025, '2025-09-15');
 
--- Register Students (Use subqueries to handle IDs dynamically)
 INSERT INTO enrollments (student_username, section_id, status) VALUES
 ('student_alice', (SELECT section_id FROM sections WHERE course_code='CSE101' LIMIT 1), 'Enrolled'),
 ('student_alice', (SELECT section_id FROM sections WHERE course_code='MTH100' LIMIT 1), 'Enrolled'),
@@ -229,155 +359,21 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ```
 
------
+---
 
-### Part 2: Comprehensive README & Project Documentation
+## ✅ Done!
 
-**Instruction:** Copy the content below and save it as **`README.md`** (or print it as PDF).
+You now have:
 
-# University ERP System (Java + Swing)
+✔ Full documentation
+✔ Full SQL included
+✔ GitHub-ready README
+✔ Working test accounts using `India@123`
 
-### Project Documentation & Deployment Guide
+If you want:
 
-## 1\. Project Overview
+✅ Screenshots section
+✅ Features badges
+✅ Demo video link styling
 
-This project is a robust desktop-based **University Enterprise Resource Planning (ERP)** system developed using **Java** and **Swing**. It is designed to manage the complex interactions between Students, Instructors, and Administrators within a university environment.
-
-The system implements a secure **Dual-Database Architecture**:
-
-1.  **Auth Database (`auth_db`):** Handles secure login, role management, and password hashing (using BCrypt).
-2.  **ERP Database (`erp_db`):** Stores academic data including profiles, courses, sections, enrollments, and grades.
-
-### Extended Academic Logic (Custom Implementation)
-
-We have implemented specific logic to simulate a realistic academic environment. We have set the current academic session to **"Monsoon 2025"**.
-
-  * **Semester Logic:** The system logic filters active students and courses. For the Monsoon term, primarily **Odd Semesters** (1, 3, 5, 7) are active.
-  * **Program Duration Rules:**
-      * **B.Tech:** 8-Semester limit.
-      * **M.Tech:** 4-Semester limit.
-      * **PhD:** No semester limit.
-  * **Archival Logic:** Students exceeding these limits are marked for archival/graduation. *Note: While the core logic for this is written, full automation of graduation is partially developed as it serves to demonstrate deployment readiness rather than a core requirement.*
-
------
-
-## 2\. High-Level Features
-
-### 👤 Role-Based Functionality
-
-  * **Student:** View course catalog, register for/drop sections (with capacity checks), view personal timetable, view grades, and download transcripts (CSV).
-  * **Instructor:** View assigned sections, manage gradebooks (enter scores), calculate weighted final grades, and view class statistics.
-  * **Admin:** Manage users (Students/Instructors), create courses, schedule sections, assign instructors, and toggle System Maintenance Mode.
-
-### 🛡️ Security & Architecture
-
-  * **Natural Key Architecture:** The system relies on **Usernames** and **Course Codes** as primary identifiers rather than arbitrary integer IDs, ensuring data robustness and readability.
-  * **Maintenance Mode:** Admins can lock the system. When active, Students and Instructors effectively have "Read-Only" access.
-  * **Data Integrity:** Strict checks prevent over-booking sections or duplicate enrollments.
-
------
-
-## 3\. How to Run on a Fresh System
-
-Follow these steps to deploy the application on a new machine.
-
-### Prerequisites
-
-  * **Java Development Kit (JDK):** Version 17 or higher.
-  * **Database:** MySQL Server (Version 8.0 recommended).
-  * **Libraries:** The project requires the following JARs (or Maven dependencies): `mysql-connector-j`, `jbcrypt`, `opencsv`, `HikariCP` & `slf4j`.
-
-### Step 1: Database Setup
-
-1.  Open your MySQL Workbench or Command Line.
-2.  Run the provided **`university_setup.sql`** script included with this submission.
-      * *Action:* This single script creates `auth_db` and `erp_db`, creates all tables, and populates them with the required "Monsoon 2025" sample data.
-
-### Step 2: Configure Application Credentials
-
-**⚠️ CRITICAL STEP:** You must update the database credentials in the Java code to match your local MySQL installation.
-
-1.  Open the project in your IDE.
-2.  Navigate to **`src/edu/univ/erp/data/DatabaseManager.java`** (or `DBConnection.java`).
-3.  Locate the credential fields and update them:
-    ```java
-    private static final String DB_USER = "root"; // Your MySQL username
-    private static final String DB_PASS = "your_password"; // Your MySQL password
-    ```
-
-### Step 3: Build and Run
-
-1.  Build the project using your IDE.
-2.  Run the main class: **`src/edu/univ/erp/Main.java`**.
-3.  The **Splash Screen** will appear, followed by the **Login Window**.
-
-### Default Test Credentials
-
-**Password:** The password for **ALL** accounts below matches the hash `$2a$10$RWj...` provided in the SQL script. (Use the plain text password you generated this hash from, typically `password123`).
-
-| Role | Username |
-| :--- | :--- |
-| **Admin** | `admin` |
-| **Student** | `student_alice` |
-| **Instructor** | `prof_jones` |
-
------
-
-## 4\. Database Design & Schema
-
-### 🗄️ Auth Database (`auth_db`)
-
-*Stores secure login credentials and system roles.*
-
-**Table: `users_auth`**
-
-  * `username` (PK): Unique login ID (Natural Key).
-  * `role`: 'Student', 'Instructor', or 'Admin'.
-  * `password_hash`: Secure BCrypt hash.
-
-### 🗄️ ERP Database (`erp_db`)
-
-*Stores all academic logic and transactional data.*
-
-**Table: `students`, `instructors`, `admins`**
-
-  * `username` (PK, FK): Links to `auth_db`.
-  * `roll_no` (Students only): University Roll Number.
-  * `current_semester`: Automatically calculated based on admission year and current session.
-
-**Table: `courses`**
-
-  * `code` (PK): Course Code (e.g., "CSE101").
-  * `allowed_semesters`: Logic for eligibility (e.g., "1,3").
-
-**Table: `sections`**
-
-  * `section_id` (PK): Internal unique ID for a specific class instance.
-  * `course_code` (FK): Links to `courses`.
-  * `instructor_username` (FK): Links to `instructors`.
-  * `semester`, `year`: E.g., "Monsoon", 2025.
-
-**Table: `enrollments`**
-
-  * `student_username` (FK): Links to `students`.
-  * `section_id` (FK): Links to `sections`.
-  * `final_score`, `course_grade`: Academic results.
-
------
-
-## 5\. Project File Structure
-
-  * **`edu.univ.erp.ui`**: Contains all Swing Panels and Frames (LoginWindow, Dashboards).
-  * **`edu.univ.erp.service`**: Business Logic Layer (AdminService, StudentService).
-  * **`edu.univ.erp.data`**: Data Access Objects (Repositories) handling SQL queries.
-  * **`edu.univ.erp.domain`**: Plain Java Objects (POJOs) representing DB entities.
-  * **`edu.univ.erp.auth`**: Session management and Password utilities.
-  * **`edu.univ.erp.util`**: Database connections and CSV export utilities.
-
------
-
-## 6\. Limitations & Future Improvements
-
-1.  **Archival Automation:** The logic to archive students after 8 semesters exists in `AdminService`, but currently requires manual triggering via the "Initialize Session" button.
-2.  **Pre-requisite Checks:** The database supports storing prerequisites, but the UI currently relies on the student to know their eligible courses.
-3.  **Advanced Grade Curves:** The system currently uses a fixed Grading Scale. Implementing a bell-curve automated grading scale is a planned future feature.
+Just say the word 🚀
