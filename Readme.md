@@ -498,6 +498,7 @@ src/
 * **Java JDK 17+**
 * **MySQL 8+**
 * **IntelliJ / Eclipse / NetBeans**
+* **Ensure you have added MySQL to path** (*eg.C:\Program Files\MySQL\MySQL Server 8.0\bin*)
 
 ### ✅ Step 1 — Configure Database Password
 
