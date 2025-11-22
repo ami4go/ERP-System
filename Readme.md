@@ -368,21 +368,3 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ---
 
 <div align="center">
-
-✅ **END OF README**
-
-</div>
-```
-
----
-
-## ✅ Done.
-
-If you now copy–paste THIS into GitHub, it will:
-
-✅ Look clean
-✅ Look professional
-✅ Include EVERYTHING
-✅ Be ONE SINGLE FILE
-
-If you want screenshots added later, say the word.
