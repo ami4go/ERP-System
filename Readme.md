@@ -1,4 +1,3 @@
-```markdown
 <div align="center">
 
 # 🎓 University ERP System (Java + Swing)
