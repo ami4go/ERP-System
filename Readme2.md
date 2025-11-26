@@ -143,14 +143,14 @@ It fixes:
 
 Final grade is computed dynamically using the weighted sum of all instructor-defined assessments.
 
-```math
+math
 \text{Final Score} = 
 \sum \left(
     \frac{\text{Student Score}}{\text{Total Marks}}
     \times
     \text{Weightage \%}
 \right)
-'''
+
 ### **Example**
 
 * Midsem: `40/50`, Weight `30%` → Contribution = `24.0`
