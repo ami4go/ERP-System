@@ -139,31 +139,25 @@ It fixes:
 
 ---
 
-# ✅ **FINAL REPLACEMENT BLOCK**
-
-````markdown
 ## ⚖️ 5. Final Grade Weighting Rule
 
 Final grade is computed dynamically using the weighted sum of all instructor-defined assessments.
 
 ```math
-\text{Final Score} =
+\text{Final Score} = 
 \sum \left(
     \frac{\text{Student Score}}{\text{Total Marks}}
     \times
     \text{Weightage \%}
 \right)
-````
+'''
+### **Example**
 
-### Example
-
-* Midsem: 40/50, Weight 30% → Contribution = 24.0
-* Endsem: 80/100, Weight 50% → Contribution = 40.0
-* Quiz: 10/10, Weight 20% → Contribution = 20.0
+* Midsem: `40/50`, Weight `30%` → Contribution = `24.0`
+* Endsem: `80/100`, Weight `50%` → Contribution = `40.0`
+* Quiz: `10/10`, Weight `20%` → Contribution = `20.0`
 
 **Final = 24 + 40 + 20 = 84 → Grade A**
-
-```
 
 ---
 ## 🔒 6. Role & Maintenance Enforcement
