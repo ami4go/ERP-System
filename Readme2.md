@@ -126,31 +126,18 @@ src/
 * Toggle **System Maintenance Mode** (locks system to read-only).
 * Perform **Database Backup & Restore**.
 
----
-
-Here is the **final, fully correct, copy-paste-ready replacement block**.
-
-It fixes:
-
-✅ Broken math block
-✅ Missing closing backticks
-✅ Markdown list alignment
-✅ Clean rendering on GitHub
-
----
-
 ## ⚖️ 5. Final Grade Weighting Rule
 
 Final grade is computed dynamically using the weighted sum of all instructor-defined assessments.
 
-math
-\text{Final Score} = 
+```math
+\text{Final Score} =
 \sum \left(
     \frac{\text{Student Score}}{\text{Total Marks}}
     \times
     \text{Weightage \%}
 \right)
-
+```
 ### **Example**
 
 * Midsem: `40/50`, Weight `30%` → Contribution = `24.0`
