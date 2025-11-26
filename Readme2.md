@@ -94,18 +94,9 @@ src/
  └─ edu.univ.erp/           (root)
 ````
 
-Below is the **updated README** with your newly provided sections **added cleanly and professionally** *right after Section 1 (Project Overview)* and **before Database Design** — exactly as requested.
-✨ *Nothing else from your original README is changed.*
-
 ---
 
-# ✅ **UPDATED README SECTION**
-
-Paste this **directly** into your README where Section 2 should go.
-
----
-
-## 🚀 2. High-Level Features & Logic Enforcement
+## 🚀 4. High-Level Features & Logic Enforcement
 
 ### 👤 **Role-Based Functionality**
 
@@ -137,7 +128,7 @@ Paste this **directly** into your README where Section 2 should go.
 
 ---
 
-## ⚖️ 3. Final Grade Weighting Rule
+## ⚖️ 5. Final Grade Weighting Rule
 
 Final grade is computed dynamically using the weighted sum of all instructor-defined assessments.
 
@@ -155,7 +146,7 @@ Final grade is computed dynamically using the weighted sum of all instructor-def
 
 ---
 
-## 🔒 4. Role & Maintenance Enforcement
+## 🔒 6. Role & Maintenance Enforcement
 
 Security is enforced **strictly at the Service Layer**, making UI bypass impossible.
 
@@ -180,7 +171,7 @@ When Admin turns **Maintenance Mode ON**:
 
 ---
 
-## ✨ 5. Bonus Features Added
+## ✨ 7. Bonus Features Added
 
 * **CSV Transcript Export** for students.
 * **Database Backup & Restore** tools for admin.
@@ -190,7 +181,7 @@ When Admin turns **Maintenance Mode ON**:
 
 ---
 
-## 🚀 5. How to Run the Application
+## 🚀 8. How to Run the Application
 
 ### ✅ Requirements
 
@@ -246,7 +237,7 @@ src/edu/univ/erp/Main.java
 
 ---
 
-## 🧩 7. FULL DEPLOYMENT SQL SCRIPT (`university_setup.sql`)
+## 🧩 9. FULL DEPLOYMENT SQL SCRIPT (`university_setup.sql`)
 
 > 📌 **Copy-Paste & Run Entire Script in MySQL Workbench**
 
