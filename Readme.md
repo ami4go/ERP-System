@@ -225,7 +225,7 @@ src/edu/univ/erp/Main.java
 
 ---
 
-## 🔑 6. Test Accounts
+## 🔑 9. Test Accounts
 
 | Role       | Username        | Password      |
 | ---------- | --------------- | ------------- |
@@ -238,7 +238,7 @@ src/edu/univ/erp/Main.java
 
 ---
 
-## 🧩 9. FULL DEPLOYMENT SQL SCRIPT (`university_setup.sql`)
+## 🧩 10. FULL DEPLOYMENT SQL SCRIPT (`university_setup.sql`)
 
 > 📌 **Copy-Paste & Run Entire Script in MySQL Workbench**
 
