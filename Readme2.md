@@ -132,7 +132,13 @@ src/
 
 Final grade is computed dynamically using the weighted sum of all instructor-defined assessments.
 
-\text{Final Score}=\sum\left(\frac{\text{Student Score}}{\text{Total Marks}}\times\text{Weightage %}\right)
+```math
+\text{Final Score} = 
+\sum \left(
+    \frac{\text{Student Score}}{\text{Total Marks}}
+    \times
+    \text{Weightage \%}
+\right)
 
 ### **Example**
 
