@@ -146,6 +146,19 @@ Final grade is computed dynamically using the weighted sum of all instructor-def
 
 **Final = 24 + 40 + 20 = 84 → Grade A**
 
+### CGPA / SGPA Grade Points
+
+| Grade | Points |
+|-------|---------|
+| A+    | 10      |
+| A     | 10      |
+| A-    | 9       |
+| B     | 8       |
+| B-    | 7       |
+| C     | 6       |
+| D     | 5       |
+| F     | 0       |
+
 ---
 ## 🔒 6. Role & Maintenance Enforcement
 
